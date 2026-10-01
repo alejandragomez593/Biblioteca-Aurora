@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biblioteca Aurora</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root{
+  --morado:#5B3E75;
+  --morado-oscuro:#4A3260;
+  --morado-suave:#7A5A97;
+  --morado-claro:#DCCFE5;
+  --lavanda:#EFE9F3;
+  --lavanda-2:#E5DCEA;
+  --gris:#2B2530;
+  --gris-suave:#5A505F;
+  --dorado:#9C6B3E;
+  --dorado-suave:#C19A70;
+  --blanco:#FFFDFB;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--lavanda);
+  color:var(--gris);
+  font-family:'Source Sans 3',sans-serif;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(239,233,243,0.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(43,37,48,0.08);
+}
+
+.nav{
+  max-width:1280px;
+  height:96px;
+  margin:0 auto;
+  padding:0 48px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+/* Nombre sin logo en la barra */
+
+.brand{
+  font-family:'Fraunces',serif;
+  font-size:1.65rem;
+  font-weight:600;
+  color:var(--gris);
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  font-size:1rem;
+  font-weight:500;
+}
+
+.nav-links a{
+  position:relative;
+  padding:8px 0;
+  transition:color .2s ease;
+}
+
+.nav-links a:hover{
+  color:var(--morado);
+}
+
+.nav-links a:first-child{
+  color:var(--morado);
+}
+
+.nav-cta{
+  background:var(--morado);
+  color:white;
+
+  padding:13px 26px;
+
+  border-radius:4px;
+
+  font-weight:600;
+  font-size:.95rem;
+
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.nav-cta:hover{
+  background:var(--morado-oscuro);
+  transform:translateY(-1px);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+  position:relative;
+  min-height:620px;
+
+  padding:60px 48px 90px;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 92% 20%,
+      rgba(122,90,151,.25) 0%,
+      rgba(122,90,151,.12) 28%,
+      transparent 48%
+    ),
+
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(122,90,151,.15) 0%,
+      transparent 32%
+    ),
+
+    var(--lavanda);
+}
+
+
+/* Forma morada de la derecha */
+
+.hero::before{
+  content:"";
+
+  position:absolute;
+
+  width:540px;
+  height:540px;
+
+  right:-180px;
+  top:-230px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(122,90,151,.34),
+      rgba(122,90,151,.14) 55%,
+      transparent 70%
+    );
+
+  z-index:0;
+}
+
+
+/* Forma decorativa inferior */
+
+.hero::after{
+  content:"";
+
+  position:absolute;
+
+  width:390px;
+  height:390px;
+
+  left:-250px;
+  bottom:-260px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(156,107,62,.13),
+      rgba(122,90,151,.13) 55%,
+      transparent 72%
+    );
+
+  z-index:0;
+}
+
+.hero-inner{
+  max-width:1280px;
+  margin:0 auto;
+
+  position:relative;
+  z-index:2;
+
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+
+  gap:70px;
+
+  align-items:center;
+}
+
+
+/* =========================================
+   LOGO GRANDE
+========================================= */
+
+.hero-logo-container{
+  margin-bottom:22px;
+}
+
+.hero-logo{
+  width:125px;
+  height:125px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:4px solid var(--morado);
+
+  background:white;
+
+  box-shadow:
+    0 12px 30px rgba(91,62,117,.20);
+}
+
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.eyebrow-word{
+  display:block;
+
+  color:var(--dorado);
+
+  font-weight:600;
+
+  font-size:1rem;
+
+  letter-spacing:.02em;
+
+  margin-bottom:16px;
+}
+
+.hero h1{
+  font-family:'Fraunces',serif;
+
+  font-size:4.25rem;
+
+  line-height:1.02;
+
+  letter-spacing:-.025em;
+
+  max-width:700px;
+
+  color:var(--gris);
+}
+
+.hero h1 em{
+  font-style:italic;
+  color:var(--morado);
+}
+
+.hero p{
+  margin-top:25px;
+
+  max-width:570px;
+
+  font-size:1.15rem;
+
+  line-height:1.65;
+
+  color:#514958;
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.hero-actions{
+  display:flex;
+
+  gap:16px;
+
+  margin-top:36px;
+
+  flex-wrap:wrap;
+}
+
+.btn-primary{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:var(--morado);
+
+  color:white;
+
+  padding:15px 30px;
+
+  min-width:200px;
+
+  border-radius:4px;
+
+  font-weight:600;
+
+  font-size:1rem;
+
+  border:none;
+
+  transition:
+    background .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.btn-primary:hover{
+  background:var(--morado-oscuro);
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 10px 22px rgba(91,62,117,.25);
+}
+
+.btn-secondary{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 28px;
+
+  min-width:165px;
+
+  border:1.5px solid var(--gris);
+
+  color:var(--gris);
+
+  border-radius:4px;
+
+  font-weight:600;
+
+  font-size:1rem;
+
+  transition:all .2s ease;
+}
+
+.btn-secondary:hover{
+  background:var(--gris);
+  color:white;
+}
+
+
+/* =========================================
+   COMPOSICIÓN DE LIBROS
+========================================= */
+
+.hero-books{
+  position:relative;
+
+  min-height:410px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+}
+
+
+/* círculo decorativo */
+
+.books-background{
+  position:absolute;
+
+  width:470px;
+  height:470px;
+
+  border-radius:50%;
+
+  right:-20px;
+
+  top:-15px;
+
+  background:
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(216,199,226,.95),
+      rgba(204,184,218,.75) 50%,
+      rgba(204,184,218,.15) 72%,
+      transparent 74%
+    );
+}
+
+
+/* pequeñas hojas decorativas */
+
+.leaf{
+  position:absolute;
+
+  width:45px;
+  height:75px;
+
+  background:rgba(122,90,151,.55);
+
+  border-radius:100% 0 100% 0;
+
+  transform:rotate(25deg);
+
+  z-index:1;
+}
+
+.leaf.one{
+  left:55px;
+  top:95px;
+}
+
+.leaf.two{
+  left:95px;
+  top:160px;
+
+  transform:rotate(-15deg);
+
+  width:35px;
+  height:60px;
+}
+
+.leaf.three{
+  left:35px;
+  top:210px;
+
+  transform:rotate(55deg);
+
+  width:32px;
+  height:55px;
+}
+
+
+/* estrellas */
+
+.star{
+  position:absolute;
+
+  color:var(--morado);
+
+  font-size:28px;
+
+  z-index:3;
+}
+
+.star.one{
+  left:50px;
+  top:55px;
+}
+
+.star.two{
+  left:300px;
+  top:75px;
+
+  font-size:22px;
+}
+
+.star.three{
+  right:50px;
+  bottom:75px;
+
+  font-size:20px;
+}
+
+
+/* libros */
+
+.books{
+  position:relative;
+
+  width:470px;
+
+  z-index:4;
+
+  margin-top:70px;
+}
+
+.book{
+  height:65px;
+
+  border-radius:5px;
+
+  margin-bottom:7px;
+
+  display:flex;
+
+  align-items:center;
+
+  padding:0 28px;
+
+  font-family:'Fraunces',serif;
+
+  font-size:1rem;
+
+  font-weight:500;
+
+  box-shadow:
+    0 12px 25px rgba(43,37,48,.18);
+}
+
+
+/* libro 1 */
+
+.book-1{
+  width:92%;
+
+  margin-left:35px;
+
+  background:#6B4A83;
+
+  color:white;
+
+  transform:rotate(-1deg);
+}
+
+
+/* libro 2 */
+
+.book-2{
+  width:100%;
+
+  background:#F5EFEA;
+
+  color:#66576A;
+
+  transform:rotate(.8deg);
+}
+
+
+/* libro 3 */
+
+.book-3{
+  width:94%;
+
+  margin-left:15px;
+
+  background:#76558E;
+
+  color:white;
+
+  transform:rotate(-.8deg);
+}
+
+
+/* libro 4 */
+
+.book-4{
+  width:87%;
+
+  margin-left:50px;
+
+  background:#594066;
+
+  color:white;
+
+  transform:rotate(1deg);
+}
+
+
+/* libro 5 */
+
+.book-5{
+  width:82%;
+
+  margin-left:75px;
+
+  background:#8768A0;
+
+  color:white;
+
+  transform:rotate(-1deg);
+}
+
+
+/* detalle dorado de los libros */
+
+.book::before{
+  content:"";
+
+  width:4px;
+  height:70%;
+
+  background:var(--dorado-suave);
+
+  margin-right:16px;
+
+  border-radius:2px;
+}
+
+
+/* =========================================
+   SECCIÓN ESTADÍSTICAS
+========================================= */
+
+.stats{
+  background:var(--gris);
+
+  color:var(--lavanda);
+
+  padding:42px 32px;
+}
+
+.stats-inner{
+  max-width:1120px;
+
+  margin:0 auto;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  flex-wrap:wrap;
+
+  gap:28px;
+}
+
+.stat .num{
+  font-family:'Fraunces',serif;
+
+  font-size:2rem;
+
+  color:#B997C7;
+}
+
+.stat .label{
+  font-size:.92rem;
+
+  color:#CABFD1;
+
+  margin-top:2px;
+}
+
+
+/* =========================================
+   SECCIÓN CÓMO FUNCIONA
+========================================= */
+
+section{
+  padding:95px 32px;
+}
+
+.section-wrap{
+  max-width:1120px;
+  margin:0 auto;
+}
+
+.section-head{
+  max-width:650px;
+  margin-bottom:50px;
+}
+
+.section-head span{
+  color:var(--dorado);
+
+  font-weight:600;
+}
+
+.section-head h2{
+  font-family:'Fraunces',serif;
+
+  font-size:2.4rem;
+
+  line-height:1.2;
+
+  margin-top:10px;
+}
+
+.section-head p{
+  margin-top:15px;
+
+  color:#514958;
+
+  font-size:1.05rem;
+}
+
+.steps{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:28px;
+}
+
+.step{
+  background:var(--blanco);
+
+  padding:35px 30px;
+
+  border-radius:5px;
+
+  border-top:4px solid var(--morado);
+
+  box-shadow:
+    0 14px 30px -20px rgba(43,37,48,.30);
+}
+
+.step:nth-child(2){
+  border-top-color:#80639B;
+}
+
+.step:nth-child(3){
+  border-top-color:#A184B6;
+}
+
+.step-mark{
+  display:block;
+
+  font-family:'Fraunces',serif;
+
+  color:var(--morado);
+
+  font-size:1.5rem;
+
+  margin-bottom:12px;
+}
+
+.step h3{
+  font-family:'Fraunces',serif;
+
+  font-size:1.25rem;
+
+  margin-bottom:10px;
+}
+
+.step p{
+  color:#5A505F;
+
+  font-size:.97rem;
+}
+
+
+/* =========================================
+   CATÁLOGO
+========================================= */
+
+.catalogo{
+  background:var(--blanco);
+
+  text-align:center;
+}
+
+.catalogo-box{
+  max-width:800px;
+
+  margin:0 auto;
+}
+
+.catalogo h2{
+  font-family:'Fraunces',serif;
+
+  font-size:2.5rem;
+
+  margin-bottom:15px;
+}
+
+.catalogo p{
+  color:#5A505F;
+
+  font-size:1.05rem;
+
+  margin-bottom:30px;
+}
+
+
+/* =========================================
+   SERVICIOS
+========================================= */
+
+.servicios{
+  background:
+    linear-gradient(
+      145deg,
+      #5B3E75 0%,
+      #4D3562 55%,
+      #5B4770 100%
+    );
+
+  color:var(--lavanda);
+}
+
+.servicios .section-head h2{
+  color:var(--lavanda);
+}
+
+.servicios .section-head p{
+  color:#DED4E5;
+}
+
+.servicios .section-head span{
+  color:#E2C495;
+}
+
+.serv-grid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:1px;
+
+  background:rgba(255,255,255,.15);
+
+  border-radius:6px;
+
+  overflow:hidden;
+}
+
+.serv-item{
+  background:rgba(43,37,48,.22);
+
+  padding:35px 28px;
+}
+
+.serv-item h3{
+  font-family:'Fraunces',serif;
+
+  color:white;
+
+  font-size:1.15rem;
+
+  margin-bottom:10px;
+}
+
+.serv-item p{
+  color:#DED4E5;
+
+  font-size:.95rem;
+}
+
+
+/* =========================================
+   HORARIOS
+========================================= */
+
+.horario-box{
+  margin-top:45px;
+
+  background:rgba(43,37,48,.22);
+
+  border-radius:6px;
+
+  padding:30px 35px;
+}
+
+.horario-row{
+  display:flex;
+
+  justify-content:space-between;
+
+  padding:11px 0;
+
+  border-bottom:1px solid rgba(255,255,255,.13);
+
+  font-size:1rem;
+}
+
+.horario-row:last-child{
+  border-bottom:none;
+}
+
+.horario-row span:last-child{
+  color:#E2C495;
+
+  font-weight:600;
+}
+
+
+/* =========================================
+   CTA FINAL
+========================================= */
+
+.cta-final{
+  text-align:center;
+
+  background:var(--lavanda);
+}
+
+.cta-final h2{
+  font-family:'Fraunces',serif;
+
+  font-size:2.4rem;
+
+  max-width:650px;
+
+  margin:0 auto 18px;
+}
+
+.cta-final p{
+  max-width:580px;
+
+  margin:0 auto 30px;
+
+  color:#514958;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+  background:var(--gris);
+
+  color:#BDB2C4;
+
+  padding:55px 32px 30px;
+}
+
+.footer-inner{
+  max-width:1120px;
+
+  margin:0 auto;
+
+  display:grid;
+
+  grid-template-columns:1.4fr 1fr 1fr;
+
+  gap:40px;
+}
+
+.footer-brand h3{
+  color:var(--lavanda);
+
+  font-family:'Fraunces',serif;
+
+  font-size:1.35rem;
+
+  margin-bottom:13px;
+}
+
+.footer-brand p{
+  font-size:.92rem;
+
+  max-width:34ch;
+}
+
+.footer-col h4{
+  color:var(--lavanda);
+
+  font-size:.95rem;
+
+  margin-bottom:14px;
+}
+
+.footer-col a{
+  display:block;
+
+  font-size:.9rem;
+
+  margin-bottom:9px;
+
+  color:#BDB2C4;
+
+  transition:color .2s;
+}
+
+.footer-col a:hover{
+  color:#B997C7;
+}
+
+.footer-bottom{
+  max-width:1120px;
+
+  margin:40px auto 0;
+
+  padding-top:24px;
+
+  border-top:1px solid rgba(255,255,255,.08);
+
+  font-size:.85rem;
+
+  color:#8C8093;
+
+  text-align:center;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:1000px){
+
+  .nav{
+    padding:0 25px;
+  }
+
+  .nav-links{
+    gap:18px;
+  }
+
+  .hero{
+    padding-left:30px;
+    padding-right:30px;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .hero-books{
+    margin-top:20px;
+  }
+
+  .hero h1{
+    font-size:3.5rem;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .serv-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+}
+
+
+@media(max-width:700px){
+
+  .nav{
+    height:auto;
+
+    padding:18px 20px;
+  }
+
+  .brand{
+    font-size:1.25rem;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-cta{
+    padding:10px 16px;
+  }
+
+  .hero{
+    padding:50px 22px 70px;
+  }
+
+  .hero-inner{
+    gap:20px;
+  }
+
+  .hero-logo{
+    width:105px;
+    height:105px;
+  }
+
+  .hero h1{
+    font-size:2.8rem;
+  }
+
+  .hero p{
+    font-size:1.05rem;
+  }
+
+  .hero-books{
+    min-height:330px;
+  }
+
+  .books{
+    width:95%;
+  }
+
+  .books-background{
+    width:350px;
+    height:350px;
+  }
+
+  .book{
+    height:55px;
+    font-size:.85rem;
+  }
+
+  .stats-inner{
+    flex-direction:column;
+  }
+
+  section{
+    padding:70px 22px;
+  }
+
+  .section-head h2{
+    font-size:2rem;
+  }
+
+  .horario-row{
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .footer-inner{
+    gap:30px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================
+     NAVEGACIÓN
+========================================= -->
+
+<header>
+
+<nav class="nav">
+
+<a href="index.html" class="brand">
+Biblioteca Aurora
+</a>
+
+<div class="nav-links">
+
+<a href="index.html">
+Inicio
+</a>
+
+<a href="como-funciona.html">
+Cómo funciona
+</a>
+
+<a href="catalogo.html">
+Catálogo
+</a>
+
+<a href="servicios.html">
+Servicios
+</a>
+
+<a href="horarios.html">
+Horarios
+</a>
+
+</div>
+
+<a href="catalogo.html" class="nav-cta">
+Buscar un libro
+</a>
+
+</nav>
+
+</header>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="hero">
+
+<div class="hero-inner">
+
+
+<!-- TEXTO -->
+
+<div>
+
+<div class="hero-logo-container">
+
+<img
+src="img/logo.jpeg"
+alt="Logo Biblioteca Aurora"
+class="hero-logo"
+>
+
+</div>
+
+<span class="eyebrow-word">
+Tu biblioteca de siempre, ahora más simple
+</span>
+
+<h1>
+Un lugar para
+<em>encontrar</em>,
+pedir y disfrutar tus próximos libros
+</h1>
+
+<p>
+Aurora reúne el catálogo de la biblioteca en un solo lugar,
+para que reservar un préstamo tome minutos y no filas de papel.
+</p>
+
+
+<div class="hero-actions">
+
+<a
+href="catalogo.html"
+class="btn-primary"
+>
+Explorar el catálogo
+</a>
+
+<a
+href="como-funciona.html"
+class="btn-secondary"
+>
+Cómo funciona
+</a>
+
+</div>
+
+</div>
+
+
+<!-- COMPOSICIÓN VISUAL -->
+
+<div class="hero-books">
+
+<div class="books-background"></div>
+
+<div class="star one">✦</div>
+<div class="star two">✦</div>
+<div class="star three">✦</div>
+
+<div class="leaf one"></div>
+<div class="leaf two"></div>
+<div class="leaf three"></div>
+
+
+<div class="books">
+
+<div class="book book-1">
+Literatura
+</div>
+
+<div class="book book-2">
+Lectura y conocimiento
+</div>
+
+<div class="book book-3">
+Historia y cultura
+</div>
+
+<div class="book book-4">
+Ciencia y naturaleza
+</div>
+
+<div class="book book-5">
+Fantasía y misterio
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     ESTADÍSTICAS
+========================================= -->
+
+<div class="stats">
+
+<div class="stats-inner">
+
+<div class="stat">
+
+<div class="num">
++2,500
+</div>
+
+<div class="label">
+títulos disponibles
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="num">
+4
+</div>
+
+<div class="label">
+categorías principales
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="num">
+100%
+</div>
+
+<div class="label">
+gratuito para la comunidad
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="num">
+6 días
+</div>
+
+<div class="label">
+de atención por semana
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     CÓMO FUNCIONA
+========================================= -->
+
+<section>
+
+<div class="section-wrap">
+
+<div class="section-head">
+
+<span>
+EL PROCESO
+</span>
+
+<h2>
+Pedir un libro prestado toma tres pasos
+</h2>
+
+<p>
+Nada de formularios largos ni filas:
+solo busca, solicita y pasa a recogerlo.
+</p>
+
+</div>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<span class="step-mark">
+Uno
+</span>
+
+<h3>
+Busca en el catálogo
+</h3>
+
+<p>
+Filtra por categoría y revisa al instante
+qué libros están disponibles.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<span class="step-mark">
+Dos
+</span>
+
+<h3>
+Solicita tu préstamo
+</h3>
+
+<p>
+Reserva el ejemplar con tu cuenta de lector
+y recibe la fecha en que puedes recogerlo.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<span class="step-mark">
+Tres
+</span>
+
+<h3>
+Recógelo y disfrútalo
+</h3>
+
+<p>
+Pasa por el mostrador con tu carnet,
+retira tu libro y devuélvelo dentro del plazo indicado.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     CATÁLOGO
+========================================= -->
+
+<section class="catalogo">
+
+<div class="catalogo-box">
+
+<h2>
+Un vistazo a nuestro catálogo
+</h2>
+
+<p>
+Explora los libros disponibles en Biblioteca Aurora
+y descubre tu próxima lectura.
+</p>
+
+<a
+href="catalogo.html"
+class="btn-primary"
+>
+Explorar el catálogo
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     SERVICIOS
+========================================= -->
+
+<section class="servicios">
+
+<div class="section-wrap">
+
+<div class="section-head">
+
+<span>
+SERVICIOS
+</span>
+
+<h2>
+Más que préstamos de libros
+</h2>
+
+<p>
+Aurora también te acompaña fuera del catálogo.
+</p>
+
+</div>
+
+
+<div class="serv-grid">
+
+
+<div class="serv-item">
+
+<h3>
+Sala de lectura
+</h3>
+
+<p>
+Un espacio tranquilo para estudiar,
+leer o trabajar en tus proyectos.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<h3>
+Orientación de lectura
+</h3>
+
+<p>
+El equipo bibliotecario te recomienda
+títulos según lo que buscas.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<h3>
+Apartado de ejemplares
+</h3>
+
+<p>
+Reserva con anticipación los libros
+que necesitas para tus tareas.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="horario-box">
+
+<div class="horario-row">
+
+<span>
+Lunes a viernes
+</span>
+
+<span>
+7:30 a.m. – 4:30 p.m.
+</span>
+
+</div>
+
+
+<div class="horario-row">
+
+<span>
+Sábado
+</span>
+
+<span>
+8:00 a.m. – 12:00 p.m.
+</span>
+
+</div>
+
+
+<div class="horario-row">
+
+<span>
+Domingo
+</span>
+
+<span>
+Cerrado
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     CTA FINAL
+========================================= -->
+
+<section class="cta-final">
+
+<h2>
+Tu próximo libro te está esperando
+</h2>
+
+<p>
+Visita la biblioteca o consulta el catálogo
+para reservar tu préstamo hoy mismo.
+</p>
+
+<a
+href="catalogo.html"
+class="btn-primary"
+>
+Explorar el catálogo
+</a>
+
+</section>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+<div class="footer-inner">
+
+
+<div class="footer-brand">
+
+<h3>
+Biblioteca Aurora
+</h3>
+
+<p>
+Un sistema de préstamos pensado para hacer
+más simple el acceso a la lectura en nuestra comunidad.
+</p>
+
+</div>
+
+
+<div class="footer-col">
+
+<h4>
+Navegación
+</h4>
+
+<a href="index.html">
+Inicio
+</a>
+
+<a href="como-funciona.html">
+Cómo funciona
+</a>
+
+<a href="catalogo.html">
+Catálogo
+</a>
+
+<a href="servicios.html">
+Servicios
+</a>
+
+<a href="horarios.html">
+Horarios
+</a>
+
+</div>
+
+
+<div class="footer-col">
+
+<h4>
+Contacto
+</h4>
+
+<a href="#">
+biblioteca.aurora@correo.com
+</a>
+
+<a href="#">
+6058-4356
+</a>
+
+<a href="#">
+Instituto Nacional General Francisco Menéndez
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 Biblioteca Aurora. Todos los derechos reservados.
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
