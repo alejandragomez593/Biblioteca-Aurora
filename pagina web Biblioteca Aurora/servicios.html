@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Servicios - Biblioteca Aurora</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root{
+  --morado:#5B3E75;
+  --verde:#3E6337;
+  --lavanda:#EFE9F3;
+  --gris:#2B2530;
+  --dorado:#9C6B3E;
+  --blanco:#FFFDFB;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--lavanda);
+  color:var(--gris);
+  font-family:'Source Sans 3',sans-serif;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(239,233,243,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(43,37,48,.08);
+}
+
+.nav{
+  max-width:1120px;
+  margin:auto;
+  padding:18px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;
+  font-weight:600;
+}
+
+.brand img{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--morado);
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  font-weight:500;
+}
+
+.nav-links a:hover{
+  color:var(--morado);
+}
+
+.nav-cta{
+  background:var(--morado);
+  color:white;
+  padding:10px 22px;
+  border-radius:3px;
+  font-weight:600;
+}
+
+.contenido{
+  max-width:1120px;
+  margin:auto;
+  padding:90px 32px;
+}
+
+.encabezado{
+  max-width:700px;
+  margin-bottom:55px;
+}
+
+.encabezado span{
+  color:#e2c495;
+  font-weight:600;
+}
+
+.encabezado h1{
+  font-family:'Fraunces',serif;
+  font-size:3rem;
+  color:var(--lavanda);
+  line-height:1.15;
+  margin:12px 0 18px;
+}
+
+.encabezado p{
+  color:#e2d9ea;
+  font-size:1.08rem;
+}
+
+.contenido{
+  background:linear-gradient(150deg,var(--morado) 0%,#4a3260 55%,var(--verde) 130%);
+  max-width:none;
+}
+
+.contenido-interno{
+  max-width:1120px;
+  margin:auto;
+}
+
+.serv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:rgba(255,255,255,.14);
+  border-radius:6px;
+  overflow:hidden;
+}
+
+.serv-item{
+  background:rgba(43,37,48,.28);
+  padding:40px 30px;
+  min-height:220px;
+}
+
+.serv-item h2{
+  font-family:'Fraunces',serif;
+  color:var(--blanco);
+  font-size:1.35rem;
+  margin-bottom:15px;
+}
+
+.serv-item p{
+  color:#e2d9ea;
+}
+
+.horario{
+  margin-top:50px;
+  background:rgba(43,37,48,.28);
+  border-radius:6px;
+  padding:30px 35px;
+}
+
+.horario h2{
+  color:var(--blanco);
+  font-family:'Fraunces',serif;
+  margin-bottom:20px;
+}
+
+.horario-row{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  color:#e2d9ea;
+}
+
+.horario-row:last-child{
+  border-bottom:none;
+}
+
+.horario-row span:last-child{
+  color:#e2c495;
+  font-weight:600;
+}
+
+footer{
+  background:var(--gris);
+  color:#bdb2c4;
+  padding:45px 32px;
+  text-align:center;
+}
+
+footer .brand{
+  color:var(--lavanda);
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+@media(max-width:860px){
+
+  .nav-links,
+  .nav-cta{
+    display:none;
+  }
+
+  .serv-grid{
+    grid-template-columns:1fr;
+  }
+
+  .encabezado h1{
+    font-size:2.4rem;
+  }
+
+  .horario-row{
+    flex-direction:column;
+    gap:5px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav class="nav">
+
+<a href="index.html" class="brand">
+<img src="img/logo.jpeg" alt="Biblioteca Aurora">
+<span>Biblioteca Aurora</span>
+</a>
+
+<div class="nav-links">
+<a href="index.html">Inicio</a>
+<a href="como-funciona.html">Cómo funciona</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="servicios.html">Servicios</a>
+<a href="horarios.html">Horarios</a>
+</div>
+
+<a href="catalogo.html" class="nav-cta">Buscar un libro</a>
+
+</nav>
+
+</header>
+
+<main class="contenido">
+
+<div class="contenido-interno">
+
+<div class="encabezado">
+
+<span>SERVICIOS</span>
+
+<h1>Más que préstamos de libros</h1>
+
+<p>
+Biblioteca Aurora también ofrece diferentes servicios
+para apoyar la lectura, el estudio y las actividades
+de nuestra comunidad.
+</p>
+
+</div>
+
+<div class="serv-grid">
+
+<div class="serv-item">
+
+<h2>Sala de lectura</h2>
+
+<p>
+Un espacio tranquilo para estudiar, leer o trabajar
+en tus proyectos.
+</p>
+
+</div>
+
+<div class="serv-item">
+
+<h2>Orientación de lectura</h2>
+
+<p>
+El equipo bibliotecario puede recomendarte títulos
+según tus intereses y necesidades.
+</p>
+
+</div>
+
+<div class="serv-item">
+
+<h2>Apartado de ejemplares</h2>
+
+<p>
+Reserva con anticipación los libros que necesitas
+para tus tareas o lecturas.
+</p>
+
+</div>
+
+</div>
+
+<div class="horario">
+
+<h2>Horarios de atención</h2>
+
+<div class="horario-row">
+<span>Lunes a viernes</span>
+<span>7:30 a.m. – 4:30 p.m.</span>
+</div>
+
+<div class="horario-row">
+<span>Sábado</span>
+<span>8:00 a.m. – 12:00 p.m.</span>
+</div>
+
+<div class="horario-row">
+<span>Domingo</span>
+<span>Cerrado</span>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer>
+
+<div class="brand">
+<img src="img/logo.jpeg" alt="Biblioteca Aurora">
+<span>Biblioteca Aurora</span>
+</div>
+
+© 2026 Biblioteca Aurora. Todos los derechos reservados.
+
+</footer>
+
+</body>
+</html>

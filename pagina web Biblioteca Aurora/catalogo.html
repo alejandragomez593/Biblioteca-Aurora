@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Catálogo - Biblioteca Aurora</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root{
+  --morado:#5B3E75;
+  --morado-suave:#7a5a97;
+  --verde:#3E6337;
+  --verde-suave:#5c8552;
+  --lavanda:#EFE9F3;
+  --gris:#2B2530;
+  --dorado:#9C6B3E;
+  --dorado-suave:#b98953;
+  --blanco:#FFFDFB;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--blanco);
+  color:var(--gris);
+  font-family:'Source Sans 3',sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(239,233,243,0.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(43,37,48,0.08);
+}
+
+.nav{
+  max-width:1120px;
+  margin:auto;
+  padding:18px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;
+  font-weight:600;
+}
+
+.brand img{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--morado);
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  font-weight:500;
+}
+
+.nav-links a:hover{
+  color:var(--morado);
+}
+
+.nav-cta{
+  background:var(--morado);
+  color:white;
+  padding:10px 22px;
+  border-radius:3px;
+  font-weight:600;
+}
+
+.contenido{
+  max-width:1120px;
+  margin:auto;
+  padding:90px 32px;
+}
+
+.encabezado{
+  max-width:700px;
+  margin-bottom:50px;
+}
+
+.encabezado span{
+  color:var(--dorado);
+  font-weight:600;
+}
+
+.encabezado h1{
+  font-family:'Fraunces',serif;
+  font-size:3rem;
+  line-height:1.15;
+  margin:12px 0 18px;
+}
+
+.encabezado p{
+  color:#4b4351;
+  font-size:1.08rem;
+}
+
+.tabs{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:40px;
+}
+
+.tab{
+  background:transparent;
+  border:1.5px solid rgba(43,37,48,0.18);
+  color:var(--gris);
+  padding:11px 22px;
+  border-radius:30px;
+  font-weight:600;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.tab:hover{
+  border-color:var(--tab-color);
+}
+
+.tab.active{
+  background:var(--tab-color);
+  border-color:var(--tab-color);
+  color:white;
+}
+
+.book-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:26px;
+}
+
+.book-card{
+  background:var(--lavanda);
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 14px 30px -18px rgba(43,37,48,0.25);
+  transition:transform .25s;
+  display:flex;
+  flex-direction:column;
+}
+
+.book-card:hover{
+  transform:translateY(-6px);
+}
+
+.book-cover{
+  height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  font-family:'Fraunces',serif;
+  font-size:1.08rem;
+  text-align:center;
+  padding:22px;
+  color:white;
+  cursor:pointer;
+}
+
+.cover-title{
+  transition:opacity .25s;
+}
+
+.cover-invite{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:18px;
+  font-family:'Source Sans 3',sans-serif;
+  font-size:.86rem;
+  font-weight:600;
+  background:rgba(0,0,0,.28);
+  opacity:0;
+  transition:opacity .25s;
+}
+
+.book-cover.open .cover-title{
+  opacity:0;
+}
+
+.book-cover.open .cover-invite{
+  opacity:1;
+}
+
+.book-info{
+  padding:18px 20px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+.book-info h3{
+  font-family:'Fraunces',serif;
+  font-size:1.03rem;
+  margin-bottom:6px;
+}
+
+.book-info p{
+  font-size:.88rem;
+  color:#5a505f;
+  flex:1;
+}
+
+.autor{
+  font-size:.82rem;
+  color:#8a7f8f;
+  margin-top:10px;
+  font-style:italic;
+}
+
+.nota{
+  margin-top:45px;
+  text-align:center;
+  color:#5a505f;
+  background:rgba(156,107,62,.08);
+  border:1px dashed rgba(156,107,62,.4);
+  padding:18px 24px;
+  border-radius:6px;
+}
+
+footer{
+  background:var(--gris);
+  color:#bdb2c4;
+  padding:45px 32px;
+  text-align:center;
+}
+
+footer .brand{
+  color:var(--lavanda);
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+@media(max-width:900px){
+
+  .book-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .nav-links,
+  .nav-cta{
+    display:none;
+  }
+}
+
+@media(max-width:550px){
+
+  .book-grid{
+    grid-template-columns:1fr;
+  }
+
+  .encabezado h1{
+    font-size:2.4rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav class="nav">
+
+<a href="index.html" class="brand">
+<img src="img/logo.jpeg" alt="Biblioteca Aurora">
+<span>Biblioteca Aurora</span>
+</a>
+
+<div class="nav-links">
+<a href="index.html">Inicio</a>
+<a href="como-funciona.html">Cómo funciona</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="servicios.html">Servicios</a>
+<a href="horarios.html">Horarios</a>
+</div>
+
+<a href="catalogo.html" class="nav-cta">Buscar un libro</a>
+
+</nav>
+
+</header>
+
+<main class="contenido">
+
+<div class="encabezado">
+
+<span>CATÁLOGO</span>
+
+<h1>Libros que te esperan en Biblioteca Aurora</h1>
+
+<p>
+Elige una categoría para explorar algunos de los títulos
+disponibles en nuestra biblioteca.
+</p>
+
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="book-grid" id="bookGrid"></div>
+
+<div class="nota">
+Este es solo un vistazo del catálogo. Para leer cualquiera
+de estos libros —o descubrir muchos más— visítanos personalmente
+en Biblioteca Aurora.
+</div>
+
+</main>
+
+<footer>
+
+<div class="brand">
+<img src="img/logo.jpeg" alt="Biblioteca Aurora">
+<span>Biblioteca Aurora</span>
+</div>
+
+© 2026 Biblioteca Aurora. Todos los derechos reservados.
+
+</footer>
+
+<script>
+
+const categorias = [
+
+{
+id:'literatura',
+nombre:'Literatura y novela',
+color:'var(--morado)',
+colorSuave:'var(--morado-suave)',
+
+libros:[
+
+{
+titulo:'Cien Años de Soledad',
+autor:'Gabriel García Márquez',
+desc:'La historia de la familia Buendía a lo largo de generaciones en el pueblo de Macondo.'
+},
+
+{
+titulo:'Don Quijote de la Mancha',
+autor:'Miguel de Cervantes',
+desc:'Las aventuras de un hidalgo que decide convertirse en caballero andante.'
+},
+
+{
+titulo:'Orgullo y Prejuicio',
+autor:'Jane Austen',
+desc:'Una novela sobre el amor, las apariencias y las diferencias sociales en la Inglaterra del siglo XIX.'
+},
+
+{
+titulo:'El Principito',
+autor:'Antoine de Saint-Exupéry',
+desc:'Un piloto perdido en el desierto conoce a un pequeño príncipe que viene de otro planeta.'
+}
+
+]
+},
+
+{
+id:'historia',
+nombre:'Historia y cultura',
+color:'var(--dorado)',
+colorSuave:'var(--dorado-suave)',
+
+libros:[
+
+{
+titulo:'Historia de El Salvador',
+autor:'Varios autores',
+desc:'Un recorrido por los hechos y personajes que marcaron la historia del país.'
+},
+
+{
+titulo:'La Odisea',
+autor:'Homero',
+desc:'El largo viaje de regreso a casa de un héroe tras la guerra de Troya.'
+},
+
+{
+titulo:'Los Miserables',
+autor:'Victor Hugo',
+desc:'La lucha de un exconvicto por redimirse en medio de la Francia del siglo XIX.'
+},
+
+{
+titulo:'El Diario de Ana Frank',
+autor:'Ana Frank',
+desc:'El testimonio de una joven escondida durante la Segunda Guerra Mundial.'
+}
+
+]
+},
+
+{
+id:'ciencia',
+nombre:'Ciencia y naturaleza',
+color:'var(--verde)',
+colorSuave:'var(--verde-suave)',
+
+libros:[
+
+{
+titulo:'Breve Historia del Tiempo',
+autor:'Stephen Hawking',
+desc:'Una explicación accesible sobre el origen y el funcionamiento del universo.'
+},
+
+{
+titulo:'El Origen de las Especies',
+autor:'Charles Darwin',
+desc:'La obra que sentó las bases de la teoría de la evolución.'
+},
+
+{
+titulo:'Cosmos',
+autor:'Carl Sagan',
+desc:'Un viaje por el universo, la ciencia y el lugar del ser humano en él.'
+},
+
+{
+titulo:'Una Breve Historia de Casi Todo',
+autor:'Bill Bryson',
+desc:'Un recorrido curioso y ameno por la ciencia que explica el mundo que nos rodea.'
+}
+
+]
+},
+
+{
+id:'fantasia',
+nombre:'Fantasía y misterio',
+color:'var(--gris)',
+colorSuave:'#453c4d',
+
+libros:[
+
+{
+titulo:'Drácula',
+autor:'Bram Stoker',
+desc:'La inquietante historia del conde que aterrorizó a Europa desde las sombras.'
+},
+
+{
+titulo:'Frankenstein',
+autor:'Mary Shelley',
+desc:'La creación de un ser artificial y las consecuencias de jugar a ser dios.'
+},
+
+{
+titulo:'Alicia en el País de las Maravillas',
+autor:'Lewis Carroll',
+desc:'Una niña cae por una madriguera y descubre un mundo lleno de personajes extraños.'
+},
+
+{
+titulo:'Los Crímenes de la Calle Morgue',
+autor:'Edgar Allan Poe',
+desc:'Un relato de misterio considerado el punto de partida del género detectivesco.'
+}
+
+]
+}
+
+];
+
+const tabsEl=document.getElementById('tabs');
+const gridEl=document.getElementById('bookGrid');
+
+function renderTabs(activeId){
+
+tabsEl.innerHTML=categorias.map(cat=>`
+
+<button
+class="tab ${cat.id===activeId?'active':''}"
+style="--tab-color:${cat.color}"
+data-id="${cat.id}">
+${cat.nombre}
+</button>
+
+`).join('');
+
+tabsEl.querySelectorAll('.tab').forEach(btn=>{
+
+btn.addEventListener('click',()=>{
+
+renderTabs(btn.dataset.id);
+renderBooks(btn.dataset.id);
+
+});
+
+});
+
+}
+
+function renderBooks(activeId){
+
+const cat=categorias.find(c=>c.id===activeId);
+
+gridEl.innerHTML=cat.libros.map(libro=>`
+
+<div class="book-card">
+
+<div
+class="book-cover"
+style="background:linear-gradient(160deg,${cat.color},${cat.colorSuave})">
+
+<span class="cover-title">
+${libro.titulo}
+</span>
+
+<span class="cover-invite">
+Visítanos en Biblioteca Aurora para leerlo
+</span>
+
+</div>
+
+<div class="book-info">
+
+<h3>${libro.titulo}</h3>
+
+<p>${libro.desc}</p>
+
+<span class="autor">
+${libro.autor}
+</span>
+
+</div>
+
+</div>
+
+`).join('');
+
+gridEl.querySelectorAll('.book-cover').forEach(cover=>{
+
+cover.addEventListener('click',()=>{
+cover.classList.toggle('open');
+});
+
+});
+
+}
+
+renderTabs('literatura');
+renderBooks('literatura');
+
+</script>
+
+</body>
+</html>
