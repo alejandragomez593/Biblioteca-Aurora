@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Servicios - Biblioteca Aurora</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root{
+  --morado:#5B3E75;
+  --lavanda:#EFE9F3;
+  --gris:#2B2530;
+  --dorado:#9C6B3E;
+  --verde:#3E6337;
+  --blanco:#FFFDFB;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--lavanda);
+  color:var(--gris);
+  font-family:'Source Sans 3',sans-serif;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(239,233,243,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(43,37,48,.08);
+}
+
+.nav{
+  max-width:1120px;
+  margin:auto;
+  padding:18px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;
+  font-weight:600;
+}
+
+.brand img{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--morado);
+}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+  font-weight:500;
+}
+
+.nav-links a:hover{
+  color:var(--morado);
+}
+
+.nav-links a:nth-child(4){
+  color:var(--morado);
+  font-weight:600;
+}
+
+.nav-cta{
+  background:var(--morado);
+  color:white;
+  padding:10px 20px;
+  border-radius:4px;
+  font-weight:600;
+}
+
+.contenido{
+  max-width:1120px;
+  margin:auto;
+  padding:80px 32px 100px;
+}
+
+.encabezado{
+  max-width:720px;
+  margin-bottom:45px;
+}
+
+.encabezado span{
+  color:var(--dorado);
+  font-weight:600;
+}
+
+.encabezado h1{
+  font-family:'Fraunces',serif;
+  font-size:3rem;
+  line-height:1.15;
+  margin:10px 0 18px;
+}
+
+.encabezado p{
+  color:#4b4351;
+  font-size:1.08rem;
+}
+
+
+/* TARJETAS */
+
+.serv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.serv-item{
+  background:var(--blanco);
+  padding:35px 30px;
+  border-radius:9px;
+  box-shadow:0 14px 30px -20px rgba(43,37,48,.35);
+  border-top:4px solid var(--morado);
+  transition:.25s;
+}
+
+.serv-item:hover{
+  transform:translateY(-5px);
+}
+
+.serv-item:nth-child(2){
+  border-top-color:var(--dorado);
+}
+
+.serv-item:nth-child(3){
+  border-top-color:var(--verde);
+}
+
+.serv-item:nth-child(4){
+  border-top-color:#80639B;
+}
+
+.serv-item:nth-child(5){
+  border-top-color:#B98953;
+}
+
+.serv-item:nth-child(6){
+  border-top-color:#5C8552;
+}
+
+.icon{
+  width:55px;
+  height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--lavanda);
+  font-size:1.7rem;
+  margin-bottom:18px;
+}
+
+.serv-item h2{
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;
+  margin-bottom:10px;
+}
+
+.serv-item p{
+  color:#5a505f;
+}
+
+
+/* INFORMACIÓN */
+
+.info-box{
+  margin-top:45px;
+  background:var(--blanco);
+  padding:30px;
+  border-radius:9px;
+  border-left:5px solid var(--morado);
+  box-shadow:0 14px 30px -20px rgba(43,37,48,.3);
+}
+
+.info-box h2{
+  font-family:'Fraunces',serif;
+  margin-bottom:8px;
+}
+
+.info-box p{
+  color:#5a505f;
+}
+
+.botones{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+
+.btn{
+  display:inline-block;
+  padding:11px 20px;
+  border-radius:5px;
+  font-weight:600;
+}
+
+.btn-primary{
+  background:var(--morado);
+  color:white;
+}
+
+.btn-secondary{
+  border:1.5px solid var(--morado);
+  color:var(--morado);
+}
+
+.btn-secondary:hover{
+  background:var(--morado);
+  color:white;
+}
+
+
+/* FOOTER */
+
+footer{
+  background:var(--gris);
+  color:#bdb2c4;
+  padding:45px 32px;
+  text-align:center;
+}
+
+footer .brand{
+  color:var(--lavanda);
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .nav-links,
+  .nav-cta{
+    display:none;
+  }
+
+  .serv-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+
+  .serv-grid{
+    grid-template-columns:1fr;
+  }
+
+  .encabezado h1{
+    font-size:2.4rem;
+  }
+
+  .contenido{
+    padding:55px 20px 80px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="nav">
+
+<a href="index.html" class="brand">
+
+<img src="img/logo.jpeg" alt="Biblioteca Aurora">
+
+<span>Biblioteca Aurora</span>
+
+</a>
+
+<div class="nav-links">
+
+<a href="index.html">Inicio</a>
+<a href="como-funciona.html">Cómo funciona</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="servicios.html">Servicios</a>
+<a href="horarios.html">Horarios</a>
+
+</div>
+
+<a href="catalogo.html#busqueda" class="nav-cta">
+Buscar un libro
+</a>
+
+</nav>
+
+</header>
+
+
+<main class="contenido">
+
+<div class="encabezado">
+
+<span>SERVICIOS</span>
+
+<h1>
+Mucho más que una biblioteca
+</h1>
+
+<p>
+Biblioteca Aurora ofrece diferentes espacios y servicios
+para apoyar la lectura, el estudio y el aprendizaje de nuestra
+comunidad.
+</p>
+
+</div>
+
+
+<div class="serv-grid">
+
+
+<div class="serv-item">
+
+<div class="icon">📖</div>
+
+<h2>Sala de lectura</h2>
+
+<p>
+Un espacio tranquilo y cómodo para leer, estudiar
+o trabajar en tus proyectos.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<div class="icon">💡</div>
+
+<h2>Orientación de lectura</h2>
+
+<p>
+Recibe recomendaciones para encontrar libros
+de acuerdo con tus intereses.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<div class="icon">📚</div>
+
+<h2>Apartado de ejemplares</h2>
+
+<p>
+Consulta la disponibilidad y solicita que un ejemplar
+sea apartado para tu visita.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<div class="icon">🔎</div>
+
+<h2>Búsqueda de información</h2>
+
+<p>
+Utiliza nuestro catálogo para localizar títulos,
+autores y diferentes categorías.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<div class="icon">📝</div>
+
+<h2>Apoyo académico</h2>
+
+<p>
+Encuentra recursos de lectura que pueden ayudarte
+con tus tareas y proyectos escolares.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<div class="icon">🌟</div>
+
+<h2>Actividades de lectura</h2>
+
+<p>
+Un espacio que promueve el interés por los libros,
+la cultura y el aprendizaje.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<h2>¿Quieres encontrar un libro?</h2>
+
+<p>
+Puedes utilizar el buscador del catálogo para encontrar
+un título o autor antes de visitar la biblioteca.
+El acceso a nuestros servicios es gratuito para la comunidad.
+</p>
+
+<div class="botones">
+
+<a href="catalogo.html#busqueda" class="btn btn-primary">
+Buscar un libro
+</a>
+
+<a href="index.html" class="btn btn-secondary">
+← Regresar a Inicio
+</a>
+
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="brand">
+
+<img
+src="img/logo.jpeg"
+alt="Biblioteca Aurora"
+style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--morado);"
+>
+
+<span>Biblioteca Aurora</span>
+
+</div>
+
+© 2026 Biblioteca Aurora. Todos los derechos reservados.
+
+</footer>
+
+</body>
+
+</html>

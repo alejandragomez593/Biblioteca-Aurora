@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cómo funciona - Biblioteca Aurora</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root{
+  --morado:#5B3E75;
+  --morado-suave:#7A5A97;
+  --lavanda:#EFE9F3;
+  --gris:#2B2530;
+  --dorado:#9C6B3E;
+  --blanco:#FFFDFB;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:var(--lavanda);
+  color:var(--gris);
+  font-family:'Source Sans 3',sans-serif;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(239,233,243,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(43,37,48,.08);
+}
+
+.nav{
+  max-width:1120px;
+  margin:auto;
+  padding:18px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:'Fraunces',serif;
+  font-size:1.3rem;
+  font-weight:600;
+}
+
+.brand img{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--morado);
+}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+  font-weight:500;
+}
+
+.nav-links a:hover{
+  color:var(--morado);
+}
+
+.nav-links a:nth-child(2){
+  color:var(--morado);
+  font-weight:600;
+}
+
+.nav-cta{
+  background:var(--morado);
+  color:white;
+  padding:10px 20px;
+  border-radius:4px;
+  font-weight:600;
+}
+
+.contenido{
+  max-width:1120px;
+  margin:auto;
+  padding:80px 32px 100px;
+}
+
+.encabezado{
+  max-width:700px;
+  margin-bottom:50px;
+}
+
+.encabezado span{
+  color:var(--dorado);
+  font-weight:600;
+}
+
+.encabezado h1{
+  font-family:'Fraunces',serif;
+  font-size:3rem;
+  line-height:1.15;
+  margin:10px 0 18px;
+}
+
+.encabezado p{
+  color:#4b4351;
+  font-size:1.08rem;
+}
+
+.pasos{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.paso{
+  background:var(--blanco);
+  padding:35px 30px;
+  border-radius:8px;
+  border-top:4px solid var(--morado);
+  box-shadow:0 14px 30px -20px rgba(43,37,48,.35);
+}
+
+.paso:nth-child(2){
+  border-top-color:var(--dorado);
+}
+
+.paso:nth-child(3){
+  border-top-color:#6E8B63;
+}
+
+.numero{
+  font-family:'Fraunces',serif;
+  font-size:1.6rem;
+  color:var(--morado);
+}
+
+.paso h2{
+  font-family:'Fraunces',serif;
+  margin:10px 0;
+  font-size:1.3rem;
+}
+
+.paso p{
+  color:#5a505f;
+}
+
+.extra{
+  margin-top:45px;
+  background:var(--gris);
+  color:var(--lavanda);
+  padding:35px;
+  border-radius:8px;
+}
+
+.extra h2{
+  font-family:'Fraunces',serif;
+  margin-bottom:10px;
+}
+
+.extra p{
+  color:#d5cadb;
+}
+
+.volver{
+  display:inline-block;
+  margin-top:25px;
+  background:white;
+  color:var(--morado);
+  padding:11px 20px;
+  border-radius:5px;
+  font-weight:600;
+}
+
+footer{
+  background:var(--gris);
+  color:#bdb2c4;
+  padding:45px 32px;
+  text-align:center;
+}
+
+footer .brand{
+  color:var(--lavanda);
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+@media(max-width:860px){
+
+  .nav-links,
+  .nav-cta{
+    display:none;
+  }
+
+  .pasos{
+    grid-template-columns:1fr;
+  }
+
+  .encabezado h1{
+    font-size:2.4rem;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="nav">
+
+<a href="index.html" class="brand">
+
+<img src="img/logo.jpeg" alt="Biblioteca Aurora">
+
+<span>Biblioteca Aurora</span>
+
+</a>
+
+<div class="nav-links">
+
+<a href="index.html">Inicio</a>
+<a href="como-funciona.html">Cómo funciona</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="servicios.html">Servicios</a>
+<a href="horarios.html">Horarios</a>
+
+</div>
+
+<a href="catalogo.html#busqueda" class="nav-cta">
+Buscar un libro
+</a>
+
+</nav>
+
+</header>
+
+
+<main class="contenido">
+
+<div class="encabezado">
+
+<span>EL PROCESO</span>
+
+<h1>
+¿Cómo funciona Biblioteca Aurora?
+</h1>
+
+<p>
+Encontrar y solicitar un libro es sencillo. Sigue estos pasos
+para aprovechar los servicios de nuestra biblioteca.
+</p>
+
+</div>
+
+
+<div class="pasos">
+
+<div class="paso">
+
+<div class="numero">Uno</div>
+
+<h2>Busca en el catálogo</h2>
+
+<p>
+Explora las categorías o utiliza el buscador para encontrar
+el título o autor que estás buscando.
+</p>
+
+</div>
+
+
+<div class="paso">
+
+<div class="numero">Dos</div>
+
+<h2>Revisa la información</h2>
+
+<p>
+Consulta la descripción, autor y disponibilidad del ejemplar
+antes de visitar la biblioteca.
+</p>
+
+</div>
+
+
+<div class="paso">
+
+<div class="numero">Tres</div>
+
+<h2>Solicita tu préstamo</h2>
+
+<p>
+Visita Biblioteca Aurora con tu carnet y solicita el libro
+que deseas llevar en préstamo.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="extra">
+
+<h2>📚 Recuerda</h2>
+
+<p>
+El acceso al catálogo y los servicios de Biblioteca Aurora
+son gratuitos para la comunidad. Devuelve los libros dentro
+del plazo indicado para que otros lectores también puedan
+disfrutarlos.
+</p>
+
+<a href="index.html" class="volver">
+← Regresar a Inicio
+</a>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div class="brand">
+
+<img src="img/logo.jpeg"
+alt="Biblioteca Aurora"
+style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--morado);">
+
+<span>Biblioteca Aurora</span>
+
+</div>
+
+© 2026 Biblioteca Aurora. Todos los derechos reservados.
+
+</footer>
+
+</body>
+
+</html>
