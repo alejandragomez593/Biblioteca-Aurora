@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biblioteca Aurora</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+:root{
+  --morado:#5B3E75;
+  --morado-oscuro:#4A3260;
+  --morado-suave:#7A5A97;
+  --lavanda:#EFE9F3;
+  --gris:#2B2530;
+  --gris-suave:#5A505F;
+  --dorado:#9C6B3E;
+  --dorado-suave:#C19A70;
+  --blanco:#FFFDFB;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--lavanda);
+  color:var(--gris);
+  font-family:'Source Sans 3',sans-serif;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(239,233,243,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(43,37,48,.08);
+}
+
+.nav{
+  max-width:1280px;
+  height:96px;
+  margin:auto;
+  padding:0 48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  font-family:'Fraunces',serif;
+  font-size:1.55rem;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  font-weight:500;
+}
+
+.nav-links a{
+  padding:8px 0;
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  color:var(--morado);
+}
+
+.nav-links a:first-child{
+  color:var(--morado);
+}
+
+.nav-cta{
+  background:var(--morado);
+  color:white;
+  padding:13px 24px;
+  border-radius:4px;
+  font-weight:600;
+  transition:.2s;
+}
+
+.nav-cta:hover{
+  background:var(--morado-oscuro);
+  transform:translateY(-2px);
+}
+
+
+/* MENU HAMBURGUESA */
+
+.menu-btn{
+  display:none;
+  width:44px;
+  height:44px;
+  border:none;
+  border-radius:5px;
+  background:var(--morado);
+  color:white;
+  font-size:1.6rem;
+  cursor:pointer;
+  align-items:center;
+  justify-content:center;
+}
+
+.menu-btn:hover{
+  background:var(--morado-oscuro);
+}
+
+
+/* HERO */
+
+.hero{
+  position:relative;
+  min-height:620px;
+  padding:65px 48px 90px;
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 92% 20%,
+      rgba(122,90,151,.25),
+      transparent 48%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(122,90,151,.14),
+      transparent 32%
+    ),
+    var(--lavanda);
+}
+
+.hero-inner{
+  max-width:1280px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:70px;
+  align-items:center;
+}
+
+
+/* LOGO */
+
+.hero-logo{
+  width:125px;
+  height:125px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid var(--morado);
+  background:white;
+
+  box-shadow:
+    0 12px 30px rgba(91,62,117,.20);
+
+  margin-bottom:22px;
+}
+
+
+/* TEXTO */
+
+.eyebrow-word{
+  display:block;
+  color:var(--dorado);
+  font-weight:600;
+  margin-bottom:16px;
+}
+
+.hero h1{
+  font-family:'Fraunces',serif;
+  font-size:4.2rem;
+  line-height:1.03;
+  letter-spacing:-.025em;
+  max-width:700px;
+}
+
+.hero h1 em{
+  font-style:italic;
+  color:var(--morado);
+}
+
+.hero p{
+  margin-top:25px;
+  max-width:570px;
+  font-size:1.15rem;
+  color:#514958;
+}
+
+
+/* BOTONES */
+
+.hero-actions{
+  display:flex;
+  gap:16px;
+  margin-top:36px;
+  flex-wrap:wrap;
+}
+
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  background:var(--morado);
+  color:white;
+
+  padding:15px 30px;
+  min-width:200px;
+
+  border-radius:4px;
+  font-weight:600;
+
+  transition:.2s;
+}
+
+.btn-primary:hover{
+  background:var(--morado-oscuro);
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(91,62,117,.25);
+}
+
+.btn-secondary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 28px;
+  min-width:165px;
+
+  border:1.5px solid var(--gris);
+  border-radius:4px;
+
+  font-weight:600;
+  transition:.2s;
+}
+
+.btn-secondary:hover{
+  background:var(--gris);
+  color:white;
+}
+
+
+/* LIBROS */
+
+.hero-books{
+  position:relative;
+  min-height:410px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.books-background{
+  position:absolute;
+
+  width:470px;
+  height:470px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(216,199,226,.95),
+      rgba(204,184,218,.75) 50%,
+      rgba(204,184,218,.15) 72%,
+      transparent 74%
+    );
+}
+
+.books{
+  position:relative;
+  width:470px;
+  z-index:4;
+  margin-top:70px;
+}
+
+.book{
+  height:65px;
+  border-radius:5px;
+  margin-bottom:7px;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 28px;
+
+  font-family:'Fraunces',serif;
+  font-size:1rem;
+  font-weight:500;
+
+  box-shadow:0 12px 25px rgba(43,37,48,.18);
+}
+
+.book::before{
+  content:"";
+
+  width:4px;
+  height:70%;
+
+  background:var(--dorado-suave);
+
+  margin-right:16px;
+  border-radius:2px;
+}
+
+.book-1{
+  width:92%;
+  margin-left:35px;
+
+  background:#6B4A83;
+  color:white;
+
+  transform:rotate(-1deg);
+}
+
+.book-2{
+  width:100%;
+
+  background:#F5EFEA;
+  color:#66576A;
+
+  transform:rotate(.8deg);
+}
+
+.book-3{
+  width:94%;
+  margin-left:15px;
+
+  background:#76558E;
+  color:white;
+
+  transform:rotate(-.8deg);
+}
+
+.book-4{
+  width:87%;
+  margin-left:50px;
+
+  background:#594066;
+  color:white;
+
+  transform:rotate(1deg);
+}
+
+.book-5{
+  width:82%;
+  margin-left:75px;
+
+  background:#8768A0;
+  color:white;
+
+  transform:rotate(-1deg);
+}
+
+
+/* DECORACIÓN */
+
+.star{
+  position:absolute;
+  color:var(--morado);
+  font-size:28px;
+  z-index:3;
+}
+
+.star.one{
+  left:50px;
+  top:55px;
+}
+
+.star.two{
+  left:300px;
+  top:75px;
+  font-size:22px;
+}
+
+.star.three{
+  right:50px;
+  bottom:75px;
+  font-size:20px;
+}
+
+
+/* ESTADÍSTICAS */
+
+.stats{
+  background:var(--gris);
+  color:var(--lavanda);
+  padding:42px 32px;
+}
+
+.stats-inner{
+  max-width:1120px;
+  margin:auto;
+
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:28px;
+}
+
+.stat .num{
+  font-family:'Fraunces',serif;
+  font-size:2rem;
+  color:#B997C7;
+}
+
+.stat .label{
+  font-size:.92rem;
+  color:#CABFD1;
+}
+
+
+/* SECCIONES */
+
+section{
+  padding:95px 32px;
+}
+
+.section-wrap{
+  max-width:1120px;
+  margin:auto;
+}
+
+.section-head{
+  max-width:650px;
+  margin-bottom:50px;
+}
+
+.section-head span{
+  color:var(--dorado);
+  font-weight:600;
+}
+
+.section-head h2{
+  font-family:'Fraunces',serif;
+  font-size:2.4rem;
+  margin-top:10px;
+}
+
+.section-head p{
+  margin-top:15px;
+  color:#514958;
+  font-size:1.05rem;
+}
+
+
+/* PASOS */
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+
+.step{
+  background:var(--blanco);
+  padding:35px 30px;
+
+  border-radius:5px;
+  border-top:4px solid var(--morado);
+
+  box-shadow:0 14px 30px -20px rgba(43,37,48,.30);
+}
+
+.step:nth-child(2){
+  border-top-color:#80639B;
+}
+
+.step:nth-child(3){
+  border-top-color:#A184B6;
+}
+
+.step-mark{
+  font-family:'Fraunces',serif;
+  color:var(--morado);
+  font-size:1.5rem;
+}
+
+.step h3{
+  font-family:'Fraunces',serif;
+  font-size:1.25rem;
+  margin:12px 0 10px;
+}
+
+.step p{
+  color:#5A505F;
+}
+
+
+/* CATÁLOGO */
+
+.catalogo{
+  background:var(--blanco);
+  text-align:center;
+}
+
+.catalogo-box{
+  max-width:800px;
+  margin:auto;
+}
+
+.catalogo h2{
+  font-family:'Fraunces',serif;
+  font-size:2.5rem;
+  margin-bottom:15px;
+}
+
+.catalogo p{
+  color:#5A505F;
+  margin-bottom:30px;
+}
+
+
+/* SERVICIOS RESUMEN */
+
+.servicios{
+  background:#E5DCEA;
+}
+
+.servicios .section-head h2{
+  color:var(--gris);
+}
+
+.servicios .section-head p{
+  color:#5A505F;
+}
+
+.serv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.serv-item{
+  background:var(--blanco);
+  padding:32px 28px;
+
+  border-radius:8px;
+
+  border-left:5px solid var(--morado);
+
+  box-shadow:0 12px 28px -18px rgba(43,37,48,.35);
+
+  transition:.2s;
+}
+
+.serv-item:nth-child(2){
+  border-left-color:var(--dorado);
+}
+
+.serv-item:nth-child(3){
+  border-left-color:#6E9465;
+}
+
+.serv-item:hover{
+  transform:translateY(-5px);
+}
+
+.serv-item h3{
+  font-family:'Fraunces',serif;
+  margin-bottom:10px;
+}
+
+.serv-item p{
+  color:#5A505F;
+}
+
+
+/* CTA */
+
+.cta-final{
+  text-align:center;
+  background:var(--lavanda);
+}
+
+.cta-final h2{
+  font-family:'Fraunces',serif;
+  font-size:2.4rem;
+  max-width:650px;
+  margin:0 auto 18px;
+}
+
+.cta-final p{
+  max-width:580px;
+  margin:0 auto 30px;
+  color:#514958;
+}
+
+
+/* FOOTER */
+
+footer{
+  background:var(--gris);
+  color:#BDB2C4;
+  padding:55px 32px 30px;
+}
+
+.footer-inner{
+  max-width:1120px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:40px;
+}
+
+.footer-brand h3{
+  color:var(--lavanda);
+  font-family:'Fraunces',serif;
+  margin-bottom:13px;
+}
+
+.footer-brand p{
+  font-size:.92rem;
+  max-width:34ch;
+}
+
+.footer-col h4{
+  color:var(--lavanda);
+  margin-bottom:14px;
+}
+
+.footer-col a{
+  display:block;
+  font-size:.9rem;
+  margin-bottom:9px;
+  color:#BDB2C4;
+}
+
+.footer-col a:hover{
+  color:#B997C7;
+}
+
+.footer-bottom{
+  max-width:1120px;
+  margin:40px auto 0;
+  padding-top:24px;
+
+  border-top:1px solid rgba(255,255,255,.08);
+
+  text-align:center;
+  font-size:.85rem;
+  color:#8C8093;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+  .nav{
+    padding:0 25px;
+  }
+
+  .nav-links{
+    gap:18px;
+  }
+
+  .hero{
+    padding-left:30px;
+    padding-right:30px;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:3.5rem;
+  }
+
+  .steps,
+  .serv-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+@media(max-width:700px){
+
+  .nav{
+    height:auto;
+    padding:18px 20px;
+    position:relative;
+  }
+
+  .brand{
+    font-size:1.25rem;
+  }
+
+  /* MENU HAMBURGUESA */
+
+  .menu-btn{
+    display:flex;
+  }
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:82px;
+    left:20px;
+    right:20px;
+
+    background:var(--blanco);
+
+    border:1px solid #DCCFE5;
+    border-radius:8px;
+
+    padding:12px;
+
+    flex-direction:column;
+    gap:3px;
+
+    box-shadow:0 15px 35px rgba(43,37,48,.18);
+  }
+
+  .nav-links.open{
+    display:flex;
+  }
+
+  .nav-links a{
+    display:block;
+    width:100%;
+    padding:12px 15px;
+    border-radius:5px;
+  }
+
+  .nav-links a:hover{
+    background:var(--lavanda);
+  }
+
+  .nav-cta{
+    display:none;
+  }
+
+  .hero{
+    padding:50px 22px 70px;
+  }
+
+  .hero-logo{
+    width:105px;
+    height:105px;
+  }
+
+  .hero h1{
+    font-size:2.8rem;
+  }
+
+  .hero-books{
+    min-height:330px;
+  }
+
+  .books{
+    width:95%;
+  }
+
+  .books-background{
+    width:350px;
+    height:350px;
+  }
+
+  .book{
+    height:55px;
+    font-size:.85rem;
+  }
+
+  .stats-inner{
+    flex-direction:column;
+  }
+
+  section{
+    padding:70px 22px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="nav">
+
+<a href="index.html" class="brand">
+Biblioteca Aurora
+</a>
+
+<div class="nav-links" id="navLinks">
+
+<a href="index.html">Inicio</a>
+
+<a href="como-funciona.html">Cómo funciona</a>
+
+<a href="catalogo.html">Catálogo</a>
+
+<a href="servicios.html">Servicios</a>
+
+<a href="horarios.html">Horarios</a>
+
+</div>
+
+<a href="catalogo.html" class="nav-cta">
+Buscar un libro
+</a>
+
+<button
+class="menu-btn"
+id="menuBtn"
+onclick="abrirMenu()"
+aria-label="Abrir menú">
+
+☰
+
+</button>
+
+</nav>
+
+</header>
+
+
+<section class="hero">
+
+<div class="hero-inner">
+
+<div>
+
+<img
+src="img/logo.jpeg"
+alt="Logo Biblioteca Aurora"
+class="hero-logo"
+>
+
+<span class="eyebrow-word">
+Tu biblioteca de siempre, ahora más simple
+</span>
+
+<h1>
+Un lugar para <em>encontrar</em>, pedir y disfrutar tus próximos libros
+</h1>
+
+<p>
+Aurora reúne el catálogo de la biblioteca en un solo lugar,
+para que encontrar tu próxima lectura sea más sencillo.
+</p>
+
+<div class="hero-actions">
+
+<a href="catalogo.html" class="btn-primary">
+Explorar el catálogo
+</a>
+
+<a href="como-funciona.html" class="btn-secondary">
+Cómo funciona
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-books">
+
+<div class="books-background"></div>
+
+<div class="star one">✦</div>
+
+<div class="star two">✦</div>
+
+<div class="star three">✦</div>
+
+<div class="books">
+
+<div class="book book-1">
+Literatura
+</div>
+
+<div class="book book-2">
+Lectura y conocimiento
+</div>
+
+<div class="book book-3">
+Historia y cultura
+</div>
+
+<div class="book book-4">
+Ciencia y naturaleza
+</div>
+
+<div class="book book-5">
+Fantasía y misterio
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="stats">
+
+<div class="stats-inner">
+
+<div class="stat">
+<div class="num">+2,500</div>
+<div class="label">títulos disponibles</div>
+</div>
+
+<div class="stat">
+<div class="num">4</div>
+<div class="label">categorías principales</div>
+</div>
+
+<div class="stat">
+<div class="num">100%</div>
+<div class="label">gratuito para la comunidad</div>
+</div>
+
+<div class="stat">
+<div class="num">6 días</div>
+<div class="label">de atención por semana</div>
+</div>
+
+</div>
+
+</div>
+
+
+<section>
+
+<div class="section-wrap">
+
+<div class="section-head">
+
+<span>EL PROCESO</span>
+
+<h2>
+Pedir un libro prestado toma tres pasos
+</h2>
+
+<p>
+Busca, solicita y pasa a recogerlo.
+</p>
+
+</div>
+
+
+<div class="steps">
+
+<div class="step">
+
+<span class="step-mark">Uno</span>
+
+<h3>Busca en el catálogo</h3>
+
+<p>
+Explora las categorías y encuentra el libro que buscas.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<span class="step-mark">Dos</span>
+
+<h3>Solicita tu préstamo</h3>
+
+<p>
+Reserva el ejemplar con tu cuenta de lector.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<span class="step-mark">Tres</span>
+
+<h3>Recógelo y disfrútalo</h3>
+
+<p>
+Pasa por la biblioteca con tu carnet y disfruta tu lectura.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="catalogo">
+
+<div class="catalogo-box">
+
+<h2>
+Un vistazo a nuestro catálogo
+</h2>
+
+<p>
+Explora los libros disponibles en Biblioteca Aurora
+y descubre tu próxima lectura.
+</p>
+
+<a href="catalogo.html" class="btn-primary">
+Explorar el catálogo
+</a>
+
+</div>
+
+</section>
+
+
+<section class="servicios">
+
+<div class="section-wrap">
+
+<div class="section-head">
+
+<span>SERVICIOS</span>
+
+<h2>
+Más que préstamos de libros
+</h2>
+
+<p>
+Espacios y servicios pensados para acompañarte durante tus estudios y lecturas.
+</p>
+
+</div>
+
+
+<div class="serv-grid">
+
+<div class="serv-item">
+
+<h3>Sala de lectura</h3>
+
+<p>
+Un espacio tranquilo para estudiar, leer o trabajar en tus proyectos.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<h3>Orientación de lectura</h3>
+
+<p>
+El equipo bibliotecario puede ayudarte a encontrar títulos según tus intereses.
+</p>
+
+</div>
+
+
+<div class="serv-item">
+
+<h3>Apartado de ejemplares</h3>
+
+<p>
+Reserva con anticipación los libros que necesitas para tus tareas o lecturas.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="cta-final">
+
+<h2>
+Tu próximo libro te está esperando
+</h2>
+
+<p>
+Explora el catálogo y descubre una nueva historia,
+un nuevo tema o algo interesante para aprender.
+</p>
+
+<a href="catalogo.html" class="btn-primary">
+Explorar el catálogo
+</a>
+
+</section>
+
+
+<footer>
+
+<div class="footer-inner">
+
+<div class="footer-brand">
+
+<h3>Biblioteca Aurora</h3>
+
+<p>
+Un sistema de préstamos pensado para hacer más simple
+el acceso a la lectura en nuestra comunidad.
+</p>
+
+</div>
+
+
+<div class="footer-col">
+
+<h4>Navegación</h4>
+
+<a href="index.html">Inicio</a>
+
+<a href="como-funciona.html">Cómo funciona</a>
+
+<a href="catalogo.html">Catálogo</a>
+
+<a href="servicios.html">Servicios</a>
+
+<a href="horarios.html">Horarios</a>
+
+</div>
+
+
+<div class="footer-col">
+
+<h4>Contacto</h4>
+
+<a href="#">biblioteca.aurora@correo.com</a>
+
+<a href="#">6058-4356</a>
+
+<a href="#">
+Instituto Nacional General Francisco Menéndez
+</a>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 Biblioteca Aurora. Todos los derechos reservados.
+
+</div>
+
+</footer>
+
+
+<script>
+
+function abrirMenu(){
+
+const menu=document.getElementById("navLinks");
+
+menu.classList.toggle("open");
+
+}
+
+
+document.querySelectorAll(".nav-links a").forEach(function(enlace){
+
+enlace.addEventListener("click",function(){
+
+document.getElementById("navLinks").classList.remove("open");
+
+});
+
+});
+
+</script>
+
+
+</body>
+
+</html>
