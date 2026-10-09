@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Catálogo - Biblioteca Aurora</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+:root{
+  --morado:#5B3E75;
+  --morado-suave:#7A5A97;
+  --verde:#3E6337;
+  --verde-suave:#5C8552;
+  --lavanda:#EFE9F3;
+  --crema:#FAF6F0;
+  --gris:#2B2530;
+  --dorado:#9C6B3E;
+  --blanco:#FFFDFB;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Source Sans 3',sans-serif;
+  background:var(--crema);
+  color:var(--gris);
+}
+
+header{
+  background:rgba(255,253,251,.97);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid #e9e0ec;
+  backdrop-filter:blur(10px);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:var(--morado);
+  font-family:'Fraunces',serif;
+  font-size:23px;
+  font-weight:600;
+  margin-right:auto;
+}
+
+.brand img{
+  width:43px;
+  height:43px;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+.nav-links a{
+  color:var(--gris);
+  text-decoration:none;
+  font-weight:600;
+}
+
+.nav-links a:hover{
+  color:var(--morado);
+}
+
+.nav-cta{
+  background:var(--morado);
+  color:white;
+  text-decoration:none;
+  padding:11px 18px;
+  border-radius:25px;
+  font-weight:700;
+}
+
+.menu-toggle{
+  display:none;
+  border:none;
+  background:var(--lavanda);
+  color:var(--morado);
+  font-size:27px;
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+.mobile-menu{
+  display:none;
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px 18px;
+}
+
+.mobile-menu a{
+  text-decoration:none;
+  color:var(--gris);
+  padding:12px 5px;
+  border-bottom:1px solid #eee7f0;
+  font-weight:600;
+}
+
+.mobile-menu .mobile-cta{
+  margin-top:10px;
+  text-align:center;
+  color:white;
+  background:var(--morado);
+  border-radius:12px;
+  border:none;
+}
+
+/* HERO */
+
+.catalog-hero{
+  background:
+    radial-gradient(circle at 90% 20%,rgba(122,90,151,.2),transparent 30%),
+    linear-gradient(135deg,#f4ebf6,#faf6f0);
+  padding:75px 24px 60px;
+  text-align:center;
+}
+
+.catalog-hero span{
+  color:var(--verde);
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.catalog-hero h1{
+  font-family:'Fraunces',serif;
+  color:var(--morado);
+  font-size:clamp(40px,6vw,62px);
+  margin:8px 0 12px;
+}
+
+.catalog-hero p{
+  max-width:680px;
+  margin:auto;
+  color:#625b65;
+  font-size:18px;
+}
+
+/* CONTENIDO */
+
+.catalog-container{
+  max-width:1200px;
+  margin:auto;
+  padding:55px 24px 80px;
+}
+
+.search-box{
+  background:white;
+  border:1px solid #e7dfea;
+  padding:22px;
+  border-radius:22px;
+  box-shadow:0 8px 25px rgba(65,45,75,.06);
+  margin-bottom:30px;
+}
+
+.search-label{
+  display:block;
+  color:var(--morado);
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.search-row{
+  display:flex;
+  gap:12px;
+}
+
+#searchInput{
+  width:100%;
+  padding:15px 18px;
+  border:2px solid #ddd3e2;
+  border-radius:14px;
+  font-family:inherit;
+  font-size:16px;
+  outline:none;
+}
+
+#searchInput:focus{
+  border-color:var(--morado-suave);
+  box-shadow:0 0 0 4px rgba(122,90,151,.10);
+}
+
+.clear-btn{
+  border:none;
+  background:var(--lavanda);
+  color:var(--morado);
+  border-radius:14px;
+  padding:0 20px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.category-title{
+  font-family:'Fraunces',serif;
+  color:var(--morado);
+  font-size:29px;
+  margin-bottom:15px;
+}
+
+.tabs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+}
+
+.tab{
+  border:1px solid #ddd3e2;
+  background:white;
+  color:var(--gris);
+  padding:10px 16px;
+  border-radius:25px;
+  cursor:pointer;
+  font-family:inherit;
+  font-weight:600;
+  transition:.2s;
+}
+
+.tab:hover,
+.tab.active{
+  background:var(--morado);
+  color:white;
+  border-color:var(--morado);
+}
+
+.resultado{
+  color:#6b636d;
+  margin-bottom:22px;
+  font-weight:600;
+}
+
+/* LIBROS */
+
+.book-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+
+.book-card{
+  background:white;
+  border:1px solid #e6dce9;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(65,45,75,.06);
+  transition:.25s;
+  display:flex;
+  flex-direction:column;
+}
+
+.book-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 32px rgba(65,45,75,.12);
+}
+
+.book-cover{
+  height:245px;
+  position:relative;
+  background:#eee7f1;
+  overflow:hidden;
+}
+
+.book-cover img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.book-fallback{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  color:white;
+  font-family:'Fraunces',serif;
+  font-size:25px;
+  line-height:1.15;
+}
+
+.book-info{
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.book-category{
+  color:var(--verde);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  margin-bottom:5px;
+}
+
+.book-info h3{
+  font-family:'Fraunces',serif;
+  color:var(--morado);
+  font-size:22px;
+  line-height:1.2;
+  margin-bottom:5px;
+}
+
+.author{
+  color:#706872;
+  margin-bottom:13px;
+}
+
+.book-description{
+  color:#655e68;
+  font-size:14px;
+  margin-bottom:18px;
+  flex:1;
+}
+
+.info-btn{
+  border:none;
+  background:var(--morado);
+  color:white;
+  padding:11px 15px;
+  border-radius:12px;
+  cursor:pointer;
+  font-family:inherit;
+  font-weight:700;
+  width:100%;
+}
+
+.info-btn:hover{
+  background:#482f60;
+}
+
+.empty{
+  grid-column:1/-1;
+  background:white;
+  border:1px solid #e6dce9;
+  border-radius:20px;
+  text-align:center;
+  padding:50px 25px;
+}
+
+.empty h3{
+  font-family:'Fraunces',serif;
+  color:var(--morado);
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.empty p{
+  color:#6b636d;
+  margin-bottom:18px;
+}
+
+.empty button{
+  border:none;
+  background:var(--verde);
+  color:white;
+  padding:11px 18px;
+  border-radius:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(30,23,35,.72);
+  z-index:2000;
+  padding:20px;
+  overflow-y:auto;
+}
+
+.modal.show{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal-content{
+  width:min(850px,100%);
+  background:white;
+  border-radius:25px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 25px 70px rgba(0,0,0,.3);
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:15px;
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:white;
+  color:var(--morado);
+  font-size:24px;
+  cursor:pointer;
+  z-index:3;
+  box-shadow:0 3px 12px rgba(0,0,0,.15);
+}
+
+.modal-body{
+  display:grid;
+  grid-template-columns:270px 1fr;
+}
+
+.modal-cover{
+  min-height:400px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+  color:white;
+  font-family:'Fraunces',serif;
+  font-size:29px;
+}
+
+.modal-info{
+  padding:45px 38px;
+}
+
+.modal-info .book-category{
+  margin-bottom:7px;
+}
+
+.modal-info h2{
+  font-family:'Fraunces',serif;
+  color:var(--morado);
+  font-size:39px;
+  line-height:1.1;
+  margin-bottom:8px;
+}
+
+.modal-author{
+  color:var(--verde);
+  font-weight:700;
+  font-size:17px;
+  margin-bottom:20px;
+}
+
+.modal-description{
+  color:#5f5862;
+  font-size:17px;
+  line-height:1.7;
+  margin-bottom:22px;
+}
+
+.modal-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.detail{
+  background:var(--lavanda);
+  border-radius:12px;
+  padding:13px;
+}
+
+.detail strong{
+  display:block;
+  color:var(--morado);
+}
+
+.detail span{
+  color:#625b65;
+  font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#30263a;
+  color:#ddd5e2;
+  padding:40px 24px 22px;
+}
+
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:35px;
+}
+
+footer h3,
+footer h4{
+  color:white;
+}
+
+footer h3{
+  font-family:'Fraunces',serif;
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+footer a{
+  display:block;
+  color:#ddd5e2;
+  text-decoration:none;
+  margin:5px 0;
+}
+
+.copyright{
+  max-width:1200px;
+  margin:25px auto 0;
+  padding-top:18px;
+  border-top:1px solid #50465a;
+  text-align:center;
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1050px){
+
+  .book-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .nav-links,
+  .nav-cta{
+    display:none;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .mobile-menu.open{
+    display:flex;
+    flex-direction:column;
+  }
+}
+
+@media(max-width:750px){
+
+  .book-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .modal-body{
+    grid-template-columns:1fr;
+  }
+
+  .modal-cover{
+    min-height:250px;
+  }
+
+  .modal-info{
+    padding:30px 23px;
+  }
+
+  .modal-info h2{
+    font-size:31px;
+  }
+}
+
+@media(max-width:550px){
+
+  .nav{
+    padding:10px 16px;
+  }
+
+  .brand{
+    font-size:19px;
+  }
+
+  .brand img{
+    width:38px;
+    height:38px;
+  }
+
+  .catalog-hero{
+    padding:55px 18px 45px;
+  }
+
+  .catalog-hero h1{
+    font-size:42px;
+  }
+
+  .catalog-container{
+    padding:35px 16px 60px;
+  }
+
+  .search-row{
+    flex-direction:column;
+  }
+
+  .clear-btn{
+    padding:12px;
+  }
+
+  .book-grid{
+    grid-template-columns:1fr;
+  }
+
+  .book-cover{
+    height:270px;
+  }
+
+  .tabs{
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:8px;
+  }
+
+  .tab{
+    white-space:nowrap;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav class="nav">
+
+<a href="index.html" class="brand">
+<img src="img/logo.jpeg" alt="Logo Biblioteca Aurora">
+Biblioteca Aurora
+</a>
+
+<div class="nav-links">
+<a href="index.html">Inicio</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="servicios.html">Servicios</a>
+<a href="como-funciona.html">Cómo funciona</a>
+<a href="horarios.html">Horarios</a>
+</div>
+
+<a href="#busqueda" class="nav-cta">Buscar un libro</a>
+
+<button class="menu-toggle" id="menuToggle"
+aria-label="Abrir menú"
+aria-expanded="false"
+aria-controls="mobileMenu">☰</button>
+
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+<a href="index.html">Inicio</a>
+<a href="catalogo.html">Catálogo</a>
+<a href="servicios.html">Servicios</a>
+<a href="como-funciona.html">Cómo funciona</a>
+<a href="horarios.html">Horarios</a>
+<a href="#busqueda" class="mobile-cta">Buscar un libro</a>
+</div>
+
+</header>
+
+
+<section class="catalog-hero">
+
+<span> Disfruta</span>
+
+<h1>Encuentra tu próxima lectura</h1>
+
+<p>
+Explora libros de literatura, historia, ciencia, fantasía
+y misterio. Puedes buscar por título, autor o categoría.
+</p>
+
+</section>
+
+
+<main class="catalog-container" id="busqueda">
+
+<div class="search-box">
+
+<label class="search-label" for="searchInput">
+🔎 Buscar en el catálogo
+</label>
+
+<div class="search-row">
+
+<input
+type="search"
+id="searchInput"
+placeholder="Escribe el título, autor o tema..."
+autocomplete="off"
+>
+
+<button type="button" class="clear-btn" id="clearBtn">
+Limpiar
+</button>
+
+</div>
+
+</div>
+
+
+<h2 class="category-title">Explora por categoría</h2>
+<div class="tabs" id="tabs"></div>
+<div class="resultado" id="resultado"></div>
+<div class="book-grid" id="bookGrid"></div>
+</main>
+
+
+<div class="modal" id="modal">
+<div class="modal-content">
+<button class="close" id="closeModal" type="button">×</button>
+<div class="modal-body">
+<div class="modal-cover" id="modalCover"></div>
+<div class="modal-info">
+<div class="book-category" id="modalCategory"></div>
+<h2 id="modalTitle"></h2>
+<div class="modal-author" id="modalAuthor"></div>
+
+<p class="modal-description" id="modalDescription"></p>
+
+<div class="modal-details">
+
+<div class="detail">
+<strong>📚 Categoría</strong>
+<span id="modalCategory2"></span>
+</div>
+
+<div class="detail">
+<strong>✓ Disponibilidad</strong>
+<span>Consulta en Biblioteca Aurora</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+<h3>Biblioteca Aurora</h3>
+<p>
+Explora nuestro catálogo y encuentra nuevas historias
+para leer y aprender.
+</p>
+</div>
+
+<div>
+<h4>Explora</h4>
+
+<a href="index.html">
+Inicio
+</a>
+
+<a href="como-funciona.html">
+Cómo funciona
+</a>
+
+<a href="catalogo.html">
+Catálogo
+</a>
+
+<a href="servicios.html">
+Servicios
+</a>
+
+<a href="horarios.html">
+Horarios
+</a>
+
+</div>
+
+<div>
+<h4>Contacto</h4>
+
+<a href="mailto:biblioteca.aurora@correo.com">
+biblioteca.aurora@correo.com
+</a>
+
+<a href="tel:60584356">
+6058-4356
+</a>
+
+<a href="horarios.html">
+Consultar horarios
+</a>
+
+<a href="catalogo.html#busqueda">
+Buscar un libro
+</a>
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 Biblioteca Aurora · Todos los derechos reservados.
+</div>
+
+</footer>
+
+
+<script>
+
+const categorias = [
+{
+id:"literatura",
+nombre:"Literatura y novela",
+color:"#67457F",
+libros:[
+
+{
+id:"cien-anos",
+titulo:"Cien Años de Soledad",
+autor:"Gabriel García Márquez",
+imagen:"https://covers.openlibrary.org/b/isbn/9780307474728-L.jpg",
+descripcion:"Una de las obras más representativas de la literatura latinoamericana. Narra la historia de varias generaciones de la familia Buendía en Macondo."
+},
+
+{
+id:"don-quijote",
+titulo:"Don Quijote de la Mancha",
+autor:"Miguel de Cervantes",
+imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl6oImUCr5Mf4i2C7SqM3CQ1BwebANJVuogJ_TOAWZIA&s=10",
+descripcion:"Clásico de la literatura universal que cuenta las aventuras de Don Quijote y su fiel compañero Sancho Panza."
+},
+
+{
+id:"orgullo",
+titulo:"Orgullo y Prejuicio",
+autor:"Jane Austen",
+imagen:"https://covers.openlibrary.org/b/isbn/9780141439518-L.jpg",
+descripcion:"Novela clásica que aborda las relaciones, las expectativas sociales y las primeras impresiones."
+},
+
+{
+id:"principito",
+titulo:"El Principito",
+autor:"Antoine de Saint-Exupéry",
+imagen:"https://covers.openlibrary.org/b/isbn/9780156012195-L.jpg",
+descripcion:"Una historia aparentemente sencilla que invita a reflexionar sobre la amistad, el amor, la infancia y la vida."
+},
+
+{
+id:"casa-espiritus",
+titulo:"La Casa de los Espíritus",
+autor:"Isabel Allende",
+imagen:"https://covers.openlibrary.org/b/isbn/9781501117015-L.jpg",
+descripcion:"Una saga familiar que mezcla historia, política y elementos de realismo mágico."
+},
+
+{
+id:"rayuela",
+titulo:"Rayuela",
+autor:"Julio Cortázar",
+imagen:"https://covers.openlibrary.org/b/isbn/9788420437484-L.jpg",
+descripcion:"Obra innovadora que permite diferentes formas de lectura y explora el amor, el azar y la búsqueda personal."
+}
+]
+},
+
+{
+id:"historia",
+titulo:"Historia y cultura",
+color:"#8A5C39",
+libros:[
+{
+id:"historia-salvador",
+titulo:"Historia de El Salvador",
+autor:"Historia y cultura salvadoreña",
+imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyDnsb6ClVGa0Py2J5ud1vN-yKZ_i8ePYU-q_7Hdwa-Q&s=10",
+descripcion:"Material de consulta para conocer acontecimientos y procesos importantes de la historia de El Salvador."
+},
+
+{
+id:"odisea",
+titulo:"La Odisea",
+autor:"Homero",
+imagen:"https://covers.openlibrary.org/b/isbn/9780140268867-L.jpg",
+descripcion:"Poema épico que relata el largo viaje de Odiseo después de la guerra de Troya para regresar a su hogar."
+},
+
+{
+id:"miserables",
+titulo:"Los Miserables",
+autor:"Victor Hugo",
+imagen:"https://covers.openlibrary.org/b/isbn/9780451419439-L.jpg",
+descripcion:"Novela histórica que presenta temas como justicia, pobreza, redención y transformación social."
+},
+
+{
+id:"ana-frank",
+titulo:"El Diario de Ana Frank",
+autor:"Ana Frank",
+imagen:"https://covers.openlibrary.org/b/isbn/9780553296983-L.jpg",
+descripcion:"Diario escrito durante la Segunda Guerra Mundial que ofrece una mirada personal sobre la vida durante la persecución nazi."
+}
+]
+},
+
+{
+id:"ciencia",
+nombre:"Ciencia y naturaleza",
+color:"#3E6337",
+libros:[
+
+{
+id:"breve-tiempo",
+titulo:"Breve Historia del Tiempo",
+autor:"Stephen Hawking",
+imagen:"https://covers.openlibrary.org/b/isbn/9780553380163-L.jpg",
+descripcion:"Una introducción a grandes preguntas sobre el universo, el tiempo, los agujeros negros y la cosmología."
+},
+
+{
+id:"origen-especies",
+titulo:"El Origen de las Especies",
+autor:"Charles Darwin",
+imagen:"https://covers.openlibrary.org/b/isbn/9780451529060-L.jpg",
+descripcion:"Obra fundamental para comprender la teoría de la evolución mediante selección natural."
+},
+
+{
+id:"cosmos",
+titulo:"Cosmos",
+autor:"Carl Sagan",
+imagen:"https://covers.openlibrary.org/b/isbn/9780345539434-L.jpg",
+descripcion:"Un recorrido por el universo y por algunas de las preguntas más fascinantes de la ciencia."
+},
+
+{
+id:"historia-casi-todo",
+titulo:"Una Breve Historia de Casi Todo",
+autor:"Bill Bryson",
+imagen:"https://covers.openlibrary.org/b/isbn/9780767908184-L.jpg",
+descripcion:"Explicación accesible y entretenida sobre grandes descubrimientos científicos y la historia de nuestro planeta."
+}
+]
+},
+
+{
+id:"fantasia",
+nombre:"Fantasía y misterio",
+color:"#5B3E75",
+libros:[
+
+{
+id:"dracula",
+titulo:"Drácula",
+autor:"Bram Stoker",
+imagen:"https://covers.openlibrary.org/b/isbn/9780486411095-L.jpg",
+descripcion:"Clásico del terror gótico que presenta la historia del misterioso Conde Drácula."
+},
+
+{
+id:"frankenstein",
+titulo:"Frankenstein",
+autor:"Mary Shelley",
+imagen:"https://covers.openlibrary.org/b/isbn/9780486282114-L.jpg",
+descripcion:"Historia sobre ciencia, responsabilidad y las consecuencias de intentar desafiar los límites de la naturaleza."
+},
+
+{
+id:"alicia",
+titulo:"Alicia en el País de las Maravillas",
+autor:"Lewis Carroll",
+imagen:"https://covers.openlibrary.org/b/isbn/9781503222687-L.jpg",
+descripcion:"Aventura fantástica en un mundo lleno de personajes extraños, juegos de palabras y situaciones inesperadas."
+},
+
+{
+id:"crimenes-morgue",
+titulo:"Los Crímenes de la Calle Morgue",
+autor:"Edgar Allan Poe",
+imagen:"https://covers.openlibrary.org/b/isbn/9780486282138-L.jpg",
+descripcion:"Uno de los relatos pioneros de la literatura detectivesca protagonizado por C. Auguste Dupin."
+}
+]
+}
+];
+
+
+function todosLosLibros(){
+
+let resultado=[];
+
+categorias.forEach(categoria=>{
+
+categoria.libros.forEach(libro=>{
+
+resultado.push({
+...libro,
+categoriaId:categoria.id,
+categoria:categoria.nombre,
+color:categoria.color
+});
+
+});
+
+});
+
+return resultado;
+}
+
+
+const libros = todosLosLibros();
+
+const tabs = document.getElementById("tabs");
+const grid = document.getElementById("bookGrid");
+const resultado = document.getElementById("resultado");
+const searchInput = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearBtn");
+
+
+function normalizar(texto){
+
+return String(texto || "")
+.toLowerCase()
+.normalize("NFD")
+.replace(/[\u0300-\u036f]/g,"")
+.trim();
+
+}
+
+
+function renderTabs(){
+
+tabs.innerHTML="";
+
+const todos = document.createElement("button");
+
+todos.type="button";
+todos.className="tab active";
+todos.textContent="Todos";
+todos.dataset.categoria="todos";
+
+todos.addEventListener("click",()=>{
+
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+todos.classList.add("active");
+
+searchInput.value="";
+
+renderBooks(libros);
+
+});
+
+tabs.appendChild(todos);
+
+
+categorias.forEach(categoria=>{
+
+const boton=document.createElement("button");
+
+boton.type="button";
+boton.className="tab";
+boton.textContent=categoria.nombre;
+boton.dataset.categoria=categoria.id;
+
+boton.addEventListener("click",()=>{
+
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+boton.classList.add("active");
+
+searchInput.value="";
+
+const filtrados=libros.filter(
+libro=>libro.categoriaId===categoria.id
+);
+
+renderBooks(filtrados);
+
+});
+
+tabs.appendChild(boton);
+
+});
+
+}
+
+
+function renderBooks(lista){
+
+resultado.textContent =
+`Mostrando ${lista.length} ${lista.length===1 ? "libro" : "libros"}.`;
+
+if(lista.length===0){
+
+grid.innerHTML=`
+
+<div class="empty">
+
+<h3>📚 No encontramos ese libro</h3>
+
+<p>
+Prueba con otro título, autor o palabra clave.
+</p>
+
+<button type="button" onclick="limpiarBusqueda()">
+Ver todos los libros
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+grid.innerHTML=lista.map(libro=>{
+
+const fallbackId="fallback-"+libro.id;
+
+return `
+
+<article class="book-card">
+
+<div class="book-cover">
+
+<div
+id="${fallbackId}"
+class="book-fallback"
+style="background:linear-gradient(145deg,${libro.color},#2f2438);">
+${libro.titulo}
+</div>
+
+${libro.imagen ? `
+<img
+src="${libro.imagen}"
+alt="Portada de ${libro.titulo}"
+onerror="
+this.style.display='none';
+document.getElementById('${fallbackId}').style.display='flex';
+">
+` : ""}
+
+</div>
+
+<div class="book-info">
+
+<div class="book-category">
+${libro.categoria}
+</div>
+
+<h3>${libro.titulo}</h3>
+
+<div class="author">
+${libro.autor}
+</div>
+
+<p class="book-description">
+${libro.descripcion}
+</p>
+
+<button
+type="button"
+class="info-btn"
+onclick="abrirModal('${libro.id}')">
+Ver información
+</button>
+
+</div>
+
+</article>
+
+`;
+
+}).join("");
+
+}
+
+
+function buscarLibros(){
+
+const texto=normalizar(searchInput.value);
+
+document.querySelectorAll(".tab")
+.forEach(t=>t.classList.remove("active"));
+
+const todosTab=document.querySelector('.tab[data-categoria="todos"]');
+
+if(todosTab){
+todosTab.classList.add("active");
+}
+
+if(texto===""){
+
+renderBooks(libros);
+return;
+
+}
+
+
+const encontrados=libros.filter(libro=>{
+
+const contenido=normalizar(`
+${libro.titulo}
+${libro.autor}
+${libro.descripcion}
+${libro.categoria}
+`);
+
+return contenido.includes(texto);
+
+});
+
+
+renderBooks(encontrados);
+
+resultado.textContent =
+`${encontrados.length} ${
+encontrados.length===1 ? "resultado encontrado" : "resultados encontrados"
+} para "${searchInput.value.trim()}".`;
+
+}
+
+
+function limpiarBusqueda(){
+
+searchInput.value="";
+
+document.querySelectorAll(".tab")
+.forEach(t=>t.classList.remove("active"));
+
+const todosTab=document.querySelector('.tab[data-categoria="todos"]');
+
+if(todosTab){
+todosTab.classList.add("active");
+}
+
+renderBooks(libros);
+
+searchInput.focus();
+
+}
+
+
+searchInput.addEventListener("input",buscarLibros);
+
+clearBtn.addEventListener("click",limpiarBusqueda);
+
+
+const modal=document.getElementById("modal");
+const closeModal=document.getElementById("closeModal");
+
+function abrirModal(id){
+
+const libro=libros.find(item=>item.id===id);
+
+if(!libro) return;
+
+document.getElementById("modalTitle").textContent=libro.titulo;
+document.getElementById("modalAuthor").textContent=libro.autor;
+document.getElementById("modalCategory").textContent=libro.categoria;
+document.getElementById("modalCategory2").textContent=libro.categoria;
+document.getElementById("modalDescription").textContent=libro.descripcion;
+
+const modalCover=document.getElementById("modalCover");
+
+if(libro.imagen){
+
+modalCover.innerHTML=`
+
+<img
+src="${libro.imagen}"
+alt="Portada de ${libro.titulo}"
+style="width:100%;height:100%;object-fit:cover;"
+onerror="
+this.style.display='none';
+this.parentElement.style.background='linear-gradient(145deg,${libro.color},#2f2438)';
+this.parentElement.innerHTML='<span>${libro.titulo}</span>';
+">
+
+`;
+
+}else{
+
+modalCover.innerHTML=`<span>${libro.titulo}</span>`;
+modalCover.style.background=
+`linear-gradient(145deg,${libro.color},#2f2438)`;
+
+}
+
+modal.classList.add("show");
+document.body.style.overflow="hidden";
+
+}
+
+
+function cerrarModal(){
+
+modal.classList.remove("show");
+document.body.style.overflow="";
+
+}
+
+
+closeModal.addEventListener("click",cerrarModal);
+
+modal.addEventListener("click",function(e){
+
+if(e.target===modal){
+cerrarModal();
+}
+
+});
+
+
+document.addEventListener("keydown",function(e){
+
+if(e.key==="Escape"){
+cerrarModal();
+}
+
+});
+
+
+renderTabs();
+renderBooks(libros);
+
+
+/* MENÚ MÓVIL */
+
+const menuToggle=document.getElementById("menuToggle");
+const mobileMenu=document.getElementById("mobileMenu");
+
+menuToggle.addEventListener("click",function(){
+
+const abierto=mobileMenu.classList.toggle("open");
+
+menuToggle.setAttribute("aria-expanded",abierto);
+menuToggle.textContent=abierto ? "✕" : "☰";
+
+});
+
+document.querySelectorAll(".mobile-menu a").forEach(link=>{
+
+link.addEventListener("click",()=>{
+
+mobileMenu.classList.remove("open");
+menuToggle.setAttribute("aria-expanded","false");
+menuToggle.textContent="☰";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
